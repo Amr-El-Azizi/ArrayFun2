@@ -2,10 +2,10 @@ public class ArrayFun2ExtraCredit
 {
     public ArrayFun2ExtraCredit()
     {
-        int[] a =  {1,1,1,0,1};
-        int[] b =  {0,0,1,1,1};
+        int[] a =  {3,4,8,6,2};
+        int[] b =  {2,3,2,3,4};
         
-        print(add(a,b,2));
+        print(product(a,b,10));
     }
     
     int[] invert(int[] nums)
@@ -66,10 +66,10 @@ public class ArrayFun2ExtraCredit
             sum = num1[i] + num2[i];
             if(sum + carry >= base)
             {
-                if((sum + carry) % base == 0 || (sum%base + carry) == base)
+                if((sum + carry) % base == 0)
                 {
                     output[i] = 0;
-                    carry = 1;
+                    carry = (sum + carry)/base;
                 }
                 else
                 {
@@ -82,9 +82,42 @@ public class ArrayFun2ExtraCredit
                 output[i] = sum + carry;
                 carry = 0;
             }
-            if(carry > 0)
-            throw new ArithmeticException("Addition Overflow Error");
         }
+        if(carry > 0)
+        throw new ArithmeticException("Addition Overflow Error");
+        return output;
+    }
+    
+    int[] product(int[] num1, int[] num2, int base)
+    {
+        int[] output = new int[5];
+        int product = 0;
+        int carry = 0;
+        for(int i = 4; i >= 0; i--)
+        {
+            product = num1[i] * num2[i];
+            if(product + carry >= base)
+            {
+                if((product + carry) % base == 0)
+                {
+                    output[i] = 0;
+                    carry = (product + carry)/base;
+                    
+                }
+                else
+                {
+                    output[i] = product%base + carry;
+                    carry = product/ base;
+                }
+            }
+            else
+            {
+                output[i] = product + carry;
+                carry = 0;
+            }
+        }
+        if(carry > 0)
+        throw new ArithmeticException("Multiplication Overflow Error");
         return output;
     }
         /// HELPERS
