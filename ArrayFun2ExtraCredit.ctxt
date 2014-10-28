@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ArrayFun2ExtraCredit()
+comment1.params=nums
+comment1.target=int[]\ invert(int[])
+comment2.params=nums
+comment2.target=int[]\ inverse(int[])
+comment3.params=nums\ deltapure
+comment3.target=int[]\ ShiftByN(int[],\ int)
+comment4.params=nums\ deltapure
+comment4.target=int[]\ ShiftByDelta(int[],\ int)
+comment5.params=num1\ num2\ base
+comment5.target=int[]\ add(int[],\ int[],\ int)
+comment6.params=s
+comment6.target=void\ print(java.lang.String)
+comment7.params=b
+comment7.target=void\ print(boolean[])
+comment8.params=nums
+comment8.target=void\ print(int[])
+comment9.params=nums
+comment9.target=void\ print(java.lang.String[])
+numComments=10
