@@ -2,10 +2,10 @@ public class ArrayFun2ExtraCredit
 {
     public ArrayFun2ExtraCredit()
     {
-        int[] a =  {3,4,8,6,2};
-        int[] b =  {2,3,2,3,4};
+              int[] a =  {2,1,3,2,1};
+        int[] b =  {1,3,2,3,2,2,1,3};
         
-        print(product(a,b,10));
+        print(add(a,b,10));
     }
     
     int[] invert(int[] nums)
@@ -56,7 +56,7 @@ public class ArrayFun2ExtraCredit
         return output;
     }
     
-    int[] add(int[] num1, int[] num2, int base)
+    int[] add5(int[] num1, int[] num2, int base)
     {
         int[] output = new int[5];
         int sum = 0;
@@ -88,7 +88,7 @@ public class ArrayFun2ExtraCredit
         return output;
     }
     
-    int[] product(int[] num1, int[] num2, int base)
+    int[] product5(int[] num1, int[] num2, int base)
     {
         int[] output = new int[5];
         int product = 0;
@@ -118,6 +118,56 @@ public class ArrayFun2ExtraCredit
         }
         if(carry > 0)
         throw new ArithmeticException("Multiplication Overflow Error");
+        return output;
+    }
+    
+        int[] add(int[] num1, int[] num2, int base)
+    {
+        int nl1 = num1.length;
+        int nl2 = num2.length;
+        if(nl1 > 100 || nl2 > 100)
+        throw new ArithmeticException("Out of Bounds Error");
+        int[] snum = num1;
+        int[] lnum = num2;
+        int lnuml = nl2;
+        int snuml = nl1;
+        if(nl1 > nl2)
+        {
+            snum = num2;
+            lnum = num1;
+            lnuml = nl1;
+            snuml = nl2;
+        }
+        int[] output = new int[lnuml];
+        int sum = 0;
+        int carry = 0;
+        int[] tempnum = new int[lnuml];
+        for(int i = 0; i < snuml; i ++)
+        tempnum[tempnum.length-1-i] = snum[snuml-1-i];
+        for(int i = lnuml-1; i >= 0; i--)
+        {
+            sum = lnum[i] + tempnum[i];
+            if(sum + carry >= base)
+            {
+                if((sum + carry) % base == 0)
+                {
+                    output[i] = 0;
+                    carry = (sum + carry)/base;
+                }
+                else
+                {
+                    output[i] = sum%base + carry;
+                    carry = sum/ base;
+                }
+            }
+            else
+            {
+                output[i] = sum + carry;
+                carry = 0;
+            }
+        }
+        if(carry > 0)
+        throw new ArithmeticException("Addition Overflow Error");
         return output;
     }
         /// HELPERS
