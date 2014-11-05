@@ -51,6 +51,7 @@ public class ArrayFun2ExtraCredit
         int[] output = new int[nl];
         for(int i = delta; i < nl; i ++)
         output[i] = nums[i-delta];
+        
         for(int i = 0; i < delta; i ++)
         output[i] = nums[nl-delta+i];
         return output;
@@ -83,6 +84,7 @@ public class ArrayFun2ExtraCredit
                 carry = 0;
             }
         }
+        
         if(carry > 0)
         throw new ArithmeticException("Addition Overflow Error");
         return output;
@@ -116,6 +118,7 @@ public class ArrayFun2ExtraCredit
                 carry = 0;
             }
         }
+        
         if(carry > 0)
         throw new ArithmeticException("Multiplication Overflow Error");
         return output;
@@ -127,6 +130,7 @@ public class ArrayFun2ExtraCredit
         int nl2 = num2.length;
         if(nl1 > 100 || nl2 > 100)
         throw new ArithmeticException("Out of Bounds Error");
+        
         int[] snum = num1;
         int[] lnum = num2;
         int lnuml = nl2;
@@ -138,12 +142,14 @@ public class ArrayFun2ExtraCredit
             lnuml = nl1;
             snuml = nl2;
         }
+        
         int[] output = new int[lnuml];
         int sum = 0;
         int carry = 0;
-        int[] tempnum = new int[lnuml];
+        int[] tempnum = new int[lnuml]; 
         for(int i = 0; i < snuml; i ++)
         tempnum[tempnum.length-1-i] = snum[snuml-1-i];
+        
         for(int i = lnuml-1; i >= 0; i--)
         {
             sum = lnum[i] + tempnum[i];
@@ -166,8 +172,65 @@ public class ArrayFun2ExtraCredit
                 carry = 0;
             }
         }
+        
         if(carry > 0)
         throw new ArithmeticException("Addition Overflow Error");
+        return output;
+    }
+    
+    int[] product(int[] num1, int[] num2, int base)
+    {
+        int nl1 = num1.length;
+        int nl2 = num2.length;
+        if(nl1 > 100 || nl2 > 100)
+        throw new ArithmeticException("Out of Bounds Error");
+        
+        int[] snum = num1;
+        int[] lnum = num2;
+        int lnuml = nl2;
+        int snuml = nl1;
+        
+        if(nl1 > nl2)
+        {
+            snum = num2;
+            lnum = num1;
+            lnuml = nl1;
+            snuml = nl2;
+        }
+        
+        int[] output = new int[5];
+        int product = 0;
+        int carry = 0;
+        int[] tempnum = new int[lnuml];
+        for(int i = 0; i < snuml; i ++)
+        tempnum[tempnum.length-1-i] = snum[snuml-1-i];
+        
+        for(int i = lnuml-1; i >= 0; i--)
+        {
+            product = lnum[i] * tempnum[i];
+            if(product + carry >= base)
+            {
+                if((product + carry) % base == 0)
+                {
+                    output[i] = 0;
+                    carry = (product + carry)/base;
+                    
+                }
+                else
+                {
+                    output[i] = product%base + carry;
+                    carry = product/ base;
+                }
+            }
+            else
+            {
+                output[i] = product + carry;
+                carry = 0;
+            }
+        }
+        
+        if(carry > 0)
+        throw new ArithmeticException("Multiplication Overflow Error");
         return output;
     }
         /// HELPERS
