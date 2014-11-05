@@ -5,7 +5,7 @@ public class ArrayFun2ExtraCredit
               int[] a =  {2,1,3,2,1};
         int[] b =  {1,3,2,3,2,2,1,3};
         
-        print(add(a,b,10));
+        print(product(a,b,10));
     }
     
     int[] invert(int[] nums)
@@ -197,17 +197,14 @@ public class ArrayFun2ExtraCredit
             lnuml = nl1;
             snuml = nl2;
         }
-        
-        int[] output = new int[5];
+        int ldifference = lnuml-snuml;
+        int[] output = new int[lnuml];
         int product = 0;
         int carry = 0;
-        int[] tempnum = new int[lnuml];
-        for(int i = 0; i < snuml; i ++)
-        tempnum[tempnum.length-1-i] = snum[snuml-1-i];
         
-        for(int i = lnuml-1; i >= 0; i--)
+        for(int i = snuml-1; i >= 0; i--)
         {
-            product = lnum[i] * tempnum[i];
+            product = lnum[i+ldifference] * snum[i];
             if(product + carry >= base)
             {
                 if((product + carry) % base == 0)
