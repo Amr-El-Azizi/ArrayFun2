@@ -2,8 +2,8 @@ public class Product
 {
     public Product()
     {
-        int[] a =  {2,6};
-        int[] b =  {3,4};
+        int[] a =  {2,6,9,8,6,7};
+        int[] b =  {3,4,3,2,6,7};
         
         print(productany(a,b,10));
     }
@@ -63,8 +63,6 @@ public class Product
     {
         int nl1 = num1.length;
         int nl2 = num2.length;
-        if(nl1 > 100 || nl2 > 100)
-        throw new ArithmeticException("Out of Bounds Error");
         
         int[] snum = num1;
         int[] lnum = num2;
@@ -78,7 +76,7 @@ public class Product
             snuml = nl2;
         }
         
-        int[] output = new int[lnuml];
+        int[] output = new int[lnuml+1];
         int sum = 0;
         int carry = 0;
         int[] tempnum = new int[lnuml]; 
@@ -92,18 +90,18 @@ public class Product
             {
                 if((sum + carry) % base == 0)
                 {
-                    output[i] = 0;
+                    output[i+1] = 0;
                     carry = (sum + carry)/base;
                 }
                 else
                 {
-                    output[i] = sum%base + carry;
+                    output[i+1] = sum%base + carry;
                     carry = sum/ base;
                 }
             }
             else
             {
-                output[i] = sum + carry;
+                output[i+1] = sum + carry;
                 carry = 0;
             }
         }
