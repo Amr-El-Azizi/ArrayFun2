@@ -2,8 +2,8 @@ public class ArrayFun2ExtraCredit
 {
     public ArrayFun2ExtraCredit()
     {
-        int[] a =  {4,5,6,7};
-        int[] b =  {2,3,4,5};
+        int[] a =  {2,6};
+        int[] b =  {3,4};
         
         print(productany(a,b,10));
     }
@@ -131,7 +131,7 @@ public class ArrayFun2ExtraCredit
         int[] output = new int[num1l+num2l];
         int product = 0;
         int carry = 0;
-        int[] temp = new int[num1l+num2l];
+        int[] temp = new int[num1l+num2l-1];
         int tens = 0;
         for(int x = num1l-1; x >= 0; x--)
         {
@@ -159,19 +159,15 @@ public class ArrayFun2ExtraCredit
                 }
             }
             temp[num1l-1] += carry;
-            print(temp);
-            System.out.println("");
             for(int i = 0; i < tens; i++)
             {
                 temp = shiftleft(temp);
             }
-            print(temp);
-            System.out.println("");
             output = add(output, temp, base);
             tens ++;
             carry = 0;
         }
-        return shiftright(output);
+        return output;
     }
     
 

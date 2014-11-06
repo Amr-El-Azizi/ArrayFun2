@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Product()
+comment1.params=num1\ num2\ base
+comment1.target=int[]\ productany(int[],\ int[],\ int)
+comment2.params=num1\ num2\ base
+comment2.target=int[]\ add(int[],\ int[],\ int)
+comment3.params=nums
+comment3.target=int[]\ shiftleft(int[])
+comment4.params=nums\ len
+comment4.target=int[]\ resetArray(int[],\ int)
+comment5.params=s
+comment5.target=void\ print(java.lang.String)
+comment6.params=b
+comment6.target=void\ print(boolean[])
+comment7.params=nums
+comment7.target=void\ print(int[])
+comment8.params=nums
+comment8.target=void\ print(java.lang.String[])
+numComments=9
